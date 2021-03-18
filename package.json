@@ -24,13 +24,14 @@
     "@umijs/preset-react": "1.x",
     "antd": "^4.14.0",
     "axios": "^0.21.1",
+    "react-markdown": "^5.0.3",
     "styled-components": "^5.2.1",
     "umi": "^3.4.2"
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.9",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/styled-components": "^5.1.9",
     "@umijs/test": "^3.4.2",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.0",

@@ -8,7 +8,7 @@ import { IQuestion } from '@/types';
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px 60px;
+  padding: 20px 160px;
 
   & > div {
     margin-top: 20px;
@@ -16,7 +16,7 @@ const StyledContainer = styled.div`
   }
 `;
 
-export default function BasicTable() {
+export default () => {
   const [page, setPage] = React.useState(0);
   const [listData, setListData] = useState<IQuestion[]>([]);
   const [loading, setLoading] = useState(true);
@@ -39,7 +39,10 @@ export default function BasicTable() {
       title: '题名',
       dataIndex: 'name',
       key: 'name',
-      render: (name: string) => <Link to="/questions/detail">{name}</Link>,
+      render: (name: string, record: IQuestion) => {
+        return <Link to={`/questions/detail/${record.id}`}>{name}</Link>;
+      },
+      width: '40%',
     },
     {
       title: '类型',
@@ -69,12 +72,21 @@ export default function BasicTable() {
     },
   ];
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = useCallback((newPage: number) => {
     setPage(newPage);
-  };
+  }, []);
+
   return (
     <StyledContainer>
-      <Table loading={loading} columns={columns} dataSource={listData} />
+      <Table
+        loading={loading}
+        columns={columns}
+        dataSource={listData}
+        pagination={{
+          pageSize: 1,
+          onChange: handleChangePage,
+        }}
+      />
     </StyledContainer>
   );
-}
+};

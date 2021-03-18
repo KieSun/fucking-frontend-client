@@ -4,4 +4,5 @@ export interface IQuestion {
   issueId: number;
   name: string;
   contents: string;
+  id: number;
 }
