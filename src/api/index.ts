@@ -1,4 +1,4 @@
-import { IQuestion } from '@/types';
+import { IQuestion, IComment } from '@/types';
 
 import axios from 'axios';
 
@@ -28,12 +28,10 @@ axios.interceptors.response.use(
     if (code === 200) {
       return data as any;
     }
-
-    throw new HttpClientError(response.status, '服务器出错', code);
+    throw new Error('服务器出错');
   },
   (error) => {
-    const msg = '服务器出错';
-    throw new HttpClientError(error.response.status, msg);
+    throw new Error('服务器出错');
   },
 );
 
@@ -41,12 +39,12 @@ export const getQuestionList = async (): Promise<IQuestion[]> => {
   return axios.get('/api/question/list');
 };
 
-export const getQuestionDetail = async (id: string): Promise<IQuestion[]> => {
+export const getQuestionDetail = async (id: string): Promise<IQuestion> => {
   return axios.get(`/api/question/${id}`);
 };
 
 export const getQuestionCommentList = async (
-  id: string,
-): Promise<IQuestion[]> => {
-  return axios.get(`/comment/${id}/list`);
+  id: number,
+): Promise<IComment[]> => {
+  return axios.get(`/api/comment/${id}/list`);
 };

@@ -3,6 +3,6 @@ export interface IQuestion {
   type?: string;
   issueId: number;
   name: string;
-  contents: string;
+  content: string;
   id: number;
 }
