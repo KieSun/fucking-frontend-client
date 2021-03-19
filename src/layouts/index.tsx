@@ -9,7 +9,6 @@ const routes = ['/interview', '/questions', '/jobs'];
 export default function Layout({
   children,
   location,
-  route,
   history,
 }: IRouteComponentProps) {
   const [value, setValue] = useState('');

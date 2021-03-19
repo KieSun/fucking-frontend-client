@@ -40,7 +40,7 @@ export default () => {
       dataIndex: 'name',
       key: 'name',
       render: (name: string, record: IQuestion) => {
-        return <Link to={`/questions/detail/${record.id}`}>{name}</Link>;
+        return <Link to={`/questions/detail?id=${record.id}`}>{name}</Link>;
       },
       width: '40%',
     },

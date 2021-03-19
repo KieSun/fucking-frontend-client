@@ -1,5 +1,6 @@
-import axios from 'axios';
 import { IQuestion } from '@/types';
+
+import axios from 'axios';
 
 export interface ResponseData {
   code: number;
@@ -38,4 +39,14 @@ axios.interceptors.response.use(
 
 export const getQuestionList = async (): Promise<IQuestion[]> => {
   return axios.get('/api/question/list');
+};
+
+export const getQuestionDetail = async (id: string): Promise<IQuestion[]> => {
+  return axios.get(`/api/question/${id}`);
+};
+
+export const getQuestionCommentList = async (
+  id: string,
+): Promise<IQuestion[]> => {
+  return axios.get(`/comment/${id}/list`);
 };
