@@ -1,10 +1,16 @@
-import { IQuestion, IComment } from '@/types';
+import { IQuestion, IComment, IType } from '@/types';
 
 import axios from 'axios';
 
 export interface ResponseData {
   code: number;
   data: any;
+}
+
+interface IQuestionQuery {
+  page: number;
+  type?: string;
+  company?: string;
 }
 
 // axios.defaults.baseURL = 'https://api.jsgodroad.com'
@@ -35,8 +41,14 @@ axios.interceptors.response.use(
   },
 );
 
-export const getQuestionList = async (): Promise<IQuestion[]> => {
-  return axios.get('/api/question/list');
+export const getQuestionList = async ({
+  page,
+}: IQuestionQuery): Promise<{ count: number; list: IQuestion[] }> => {
+  return axios.get(`/api/question/list`, {
+    params: {
+      page,
+    },
+  });
 };
 
 export const getQuestionDetail = async (id: string): Promise<IQuestion> => {
@@ -47,4 +59,10 @@ export const getQuestionCommentList = async (
   id: number,
 ): Promise<IComment[]> => {
   return axios.get(`/api/comment/${id}/list`);
+};
+
+export const likeComment = async (id: number) => {
+  return axios.post('/api/comment/like', {
+    id,
+  });
 };

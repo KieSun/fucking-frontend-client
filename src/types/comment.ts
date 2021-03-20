@@ -4,4 +4,6 @@ export interface IComment {
   content: string;
   updatedAt: string;
   like: number;
+  commentId: number;
+  htmlUrl: string;
 }
