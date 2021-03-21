@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import { IRouteComponentProps } from 'umi';
-import ReactMarkdown from 'react-markdown';
 import {
   Typography,
   Comment,
@@ -14,25 +13,12 @@ import {
 import styled from 'styled-components';
 import moment from 'moment';
 import { HeartTwoTone, HeartFilled, RightOutlined } from '@ant-design/icons';
-import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { github } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
-import 'github-markdown-css';
-
 import { getQuestionDetail, getQuestionCommentList, likeComment } from '@/api';
 import { IQuestion, IComment } from '@/types';
-
-SyntaxHighlighter.registerLanguage('js', js);
+import Markdown from '@/components/markdown';
+import { goTo } from '@/utils';
 
 const { Title } = Typography;
-
-const renderers = {
-  code: ({ value, language = 'javascript' }) => {
-    return (
-      <SyntaxHighlighter style={github} language={language} children={value} />
-    );
-  },
-};
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -97,7 +83,7 @@ export default ({ location, history }: IRouteComponentProps) => {
   );
 
   const handleGoToGithub = useCallback((url: string) => {
-    window.open(url, '_blank');
+    goTo(url);
   }, []);
 
   return (
@@ -117,11 +103,7 @@ export default ({ location, history }: IRouteComponentProps) => {
                 {detail.company}
               </Tag>
             </StyledTagWrapper>
-            <div className="markdown-body">
-              <ReactMarkdown renderers={renderers}>
-                {detail.content}
-              </ReactMarkdown>
-            </div>
+            <Markdown content={detail.content} />
             <StyledButton
               type="primary"
               shape="round"
@@ -148,13 +130,7 @@ export default ({ location, history }: IRouteComponentProps) => {
                       <Avatar src={item.avatarUrl} />
                     </span>
                   }
-                  content={
-                    <div className="markdown-body">
-                      <ReactMarkdown renderers={renderers}>
-                        {item.content}
-                      </ReactMarkdown>
-                    </div>
-                  }
+                  content={<Markdown content={item.content} />}
                   datetime={
                     <span>
                       {moment(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
