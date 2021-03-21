@@ -14,12 +14,6 @@ const StyledWrapper = styled.div`
   flex-direction: column;
 `;
 
-const StyledImg = styled.img`
-  width: 600px;
-  height: 280px;
-  object-fit: cover;
-`;
-
 const StyledRow = styled(Row)`
   border-radius: 2px;
   overflow: hidden;
@@ -53,7 +47,8 @@ export default () => {
   }, []);
   return (
     <StyledWrapper>
-      <StyledImg
+      <img
+        style={{ width: 600, height: 280, objectFit: 'cover' }}
         src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/20190728231530.jpeg"
         alt=""
       />

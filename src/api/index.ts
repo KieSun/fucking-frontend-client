@@ -13,19 +13,12 @@ interface IQuestionQuery {
   company?: string;
 }
 
-// axios.defaults.baseURL = 'https://api.jsgodroad.com'
-
-export class HttpClientError extends Error {
-  public readonly status: number;
-  public readonly code?: number;
-  constructor(status: number, msg: string, code?: number) {
-    super(msg);
-    this.status = status;
-    if (code) {
-      this.code = code;
-    }
-  }
+const isProd = process.env.NODE_ENV === 'production';
+if (isProd) {
+  axios.defaults.baseURL = 'https://api.jsgodroad.com';
 }
+
+const PREFIX = isProd ? '' : '/api';
 
 axios.interceptors.response.use(
   (response): any => {
@@ -44,7 +37,7 @@ axios.interceptors.response.use(
 export const getQuestionList = async ({
   page,
 }: IQuestionQuery): Promise<{ count: number; list: IQuestion[] }> => {
-  return axios.get(`/api/question/list`, {
+  return axios.get(`${PREFIX}/question/list`, {
     params: {
       page,
     },
@@ -52,17 +45,17 @@ export const getQuestionList = async ({
 };
 
 export const getQuestionDetail = async (id: string): Promise<IQuestion> => {
-  return axios.get(`/api/question/${id}`);
+  return axios.get(`${PREFIX}/question/${id}`);
 };
 
 export const getQuestionCommentList = async (
   id: number,
 ): Promise<IComment[]> => {
-  return axios.get(`/api/comment/${id}/list`);
+  return axios.get(`${PREFIX}/comment/${id}/list`);
 };
 
 export const likeComment = async (id: number) => {
-  return axios.post('/api/comment/like', {
+  return axios.post('${PREFIX}/comment/like', {
     id,
   });
 };
