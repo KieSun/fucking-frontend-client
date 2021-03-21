@@ -6,6 +6,7 @@
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
+    "analyze": "ANALYZE=1 umi build",
     "test:coverage": "umi-test --coverage"
   },
   "gitHooks": {
@@ -25,6 +26,7 @@
     "@umijs/preset-react": "1.x",
     "antd": "^4.14.0",
     "axios": "^0.21.1",
+    "dayjs": "^1.10.4",
     "github-markdown-css": "^4.0.0",
     "react-markdown": "^5.0.3",
     "react-syntax-highlighter": "^15.4.3",

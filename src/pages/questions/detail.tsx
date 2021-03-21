@@ -11,7 +11,7 @@ import {
   Button,
 } from 'antd';
 import styled from 'styled-components';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import { HeartTwoTone, HeartFilled, RightOutlined } from '@ant-design/icons';
 import { getQuestionDetail, getQuestionCommentList, likeComment } from '@/api';
 import { IQuestion, IComment } from '@/types';
@@ -133,7 +133,7 @@ export default ({ location, history }: IRouteComponentProps) => {
                   content={<Markdown content={item.content} />}
                   datetime={
                     <span>
-                      {moment(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
+                      {dayjs(item.updatedAt).format('YYYY-MM-DD hh:mm:ss')}
                     </span>
                   }
                   actions={[

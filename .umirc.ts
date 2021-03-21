@@ -43,7 +43,13 @@ export default defineConfig({
   },
   ssr: {},
   exportStatic: {},
+  externals: {
+    react: 'window.React',
+    'react-dom': 'window.ReactDOM',
+  },
   headScripts: [
+    'https://gw.alipayobjects.com/os/lib/react/16.13.1/umd/react.production.min.js',
+    'https://gw.alipayobjects.com/os/lib/react-dom/16.13.1/umd/react-dom.production.min.js',
     `https://www.googletagmanager.com/gtag/js?id=G-RCYB8E74BD`,
     `window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -51,6 +57,28 @@ export default defineConfig({
 
   gtag('config', 'G-RCYB8E74BD');`,
   ],
+  chainWebpack(config: any) {
+    config.merge({
+      optimization: {
+        splitChunks: {
+          chunks: 'all',
+          automaticNameDelimiter: '.',
+          name: true,
+          minSize: 30000,
+          minChunks: 1,
+          cacheGroups: {
+            vendors: {
+              name: 'vendors',
+              chunks: 'all',
+              test: /[\\/]node_modules[\\/]/,
+              priority: -12,
+            },
+          },
+        },
+      },
+    });
+  },
+  chunks: ['vendors', 'umi'],
   favicon:
     'https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/21/16163401406281.png',
 });
