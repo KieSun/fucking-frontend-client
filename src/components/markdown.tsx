@@ -21,9 +21,16 @@ const renderers = {
 };
 
 export default ({ content }: { content: string }) => {
+  const newContent = content.replace('[去答题](#issue-comment-box)', '');
   return (
     <div className="markdown-body">
-      <ReactMarkdown renderers={renderers}>{content}</ReactMarkdown>
+      <ReactMarkdown
+        renderers={renderers}
+        allowDangerousHtml
+        linkTarget="_blank"
+      >
+        {newContent}
+      </ReactMarkdown>
     </div>
   );
 };
