@@ -1,10 +1,10 @@
 import React from 'react';
 import Markdown from '@/components/markdown';
-import './index.less';
+import styles from './index.less';
 
 export default () => {
   return (
-    <div className="author-wrapper">
+    <div className={styles.authorWrapper}>
       <Markdown
         content={`
 笔者网名 yck，目前两年多前端经验，就职于酷家乐基础架构组。我们公司杭州、上海、成都都有研发中心，欢迎投递简历至笔者的邮箱：<zx597813039@gmail.com>。

@@ -2,14 +2,14 @@ import React, { useCallback } from 'react';
 import Markdown from '@/components/markdown';
 import { Button } from 'antd';
 import { goTo } from '@/utils';
-import './index.less';
+import styles from './index.less';
 
 export default () => {
   const handleClick = useCallback(() => {
     goTo('https://yuchengkai.cn/docs/frontend/');
   }, []);
   return (
-    <div className="interview-wrapper">
+    <div className={styles.interviewWrapper}>
       <Markdown
         content={`
 如果需要用一句话来介绍这份面试资料的话，「**半年磨一剑**」应该是最好的答案了。

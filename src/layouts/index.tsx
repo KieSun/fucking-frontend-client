@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Tabs } from 'antd';
 import { IRouteComponentProps } from 'umi';
-import './index.less';
+import styles from './index.less';
 
 const { TabPane } = Tabs;
 
@@ -37,7 +37,7 @@ export default function Layout({
       </Tabs>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>{children}</div>
       {location.pathname !== '/' ? (
-        <div className="fix-wrapper">
+        <div className={styles.fixWrapper}>
           <p>加入前端进阶交流群</p>
           <p>扫描二维码自动拉群</p>
           <img

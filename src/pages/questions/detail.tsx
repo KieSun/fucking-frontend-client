@@ -16,7 +16,7 @@ import { getQuestionDetail, getQuestionCommentList, likeComment } from '@/api';
 import { IQuestion, IComment } from '@/types';
 import Markdown from '@/components/markdown';
 import { goTo } from '@/utils';
-import './detail.less';
+import styles from './detail.less';
 
 const { Title } = Typography;
 
@@ -63,13 +63,13 @@ export default ({ location, history }: IRouteComponentProps) => {
   return (
     <Spin spinning={loading}>
       <BackTop />
-      <div className="detail-wrapper">
+      <div className={styles.detailWrapper}>
         {detail && Object.keys(detail).length ? (
-          <div className="question-wrapper">
+          <div className={styles.questionWrapper}>
             <Title level={3} style={{ textAlign: 'center' }}>
               {detail.name}
             </Title>
-            <div className="tag-wrapper">
+            <div className={styles.tagWrapper}>
               {detail.type.map((item) => (
                 <Tag color="#f50" key={item}>
                   {item}

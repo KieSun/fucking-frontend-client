@@ -3,6 +3,7 @@ import { Tag, Table, Modal, Button } from 'antd';
 import { Link } from 'umi';
 import { getQuestionList } from '@/api';
 import { IQuestion } from '@/types';
+import styles from './index.less';
 
 export default () => {
   const [page, setPage] = React.useState(1);
@@ -81,7 +82,7 @@ export default () => {
   }, [isModalVisible]);
 
   return (
-    <div className="question-list-wrapper">
+    <div className={styles.questionListWrapper}>
       <Modal
         title="提交面试题"
         visible={isModalVisible}
