@@ -50,12 +50,14 @@ export default defineConfig({
   headScripts: [
     'https://gw.alipayobjects.com/os/lib/react/16.13.1/umd/react.production.min.js',
     'https://gw.alipayobjects.com/os/lib/react-dom/16.13.1/umd/react-dom.production.min.js',
-    `https://www.googletagmanager.com/gtag/js?id=G-RCYB8E74BD`,
-    `window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RCYB8E74BD');`,
+    `var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c40c350e6d0425682fcf476c87420aa";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+    `,
   ],
   chainWebpack(config: any) {
     config.merge({
