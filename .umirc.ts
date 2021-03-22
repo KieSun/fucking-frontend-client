@@ -83,4 +83,5 @@ export default defineConfig({
   chunks: ['vendors', 'umi'],
   favicon:
     'https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/21/16163401406281.png',
+  hash: true,
 });
