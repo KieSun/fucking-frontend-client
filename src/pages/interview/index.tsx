@@ -1,24 +1,15 @@
 import React, { useCallback } from 'react';
 import Markdown from '@/components/markdown';
-import styled from 'styled-components';
 import { Button } from 'antd';
 import { goTo } from '@/utils';
-
-const StyledWrapper = styled.div`
-  margin: 100px auto 0;
-  width: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
+import './index.less';
 
 export default () => {
   const handleClick = useCallback(() => {
     goTo('https://yuchengkai.cn/docs/frontend/');
   }, []);
   return (
-    <StyledWrapper>
+    <div className="interview-wrapper">
       <Markdown
         content={`
 如果需要用一句话来介绍这份面试资料的话，「**半年磨一剑**」应该是最好的答案了。
@@ -40,6 +31,6 @@ export default () => {
       >
         前往阅读
       </Button>
-    </StyledWrapper>
+    </div>
   );
 };

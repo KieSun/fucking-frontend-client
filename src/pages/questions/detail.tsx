@@ -10,41 +10,15 @@ import {
   BackTop,
   Button,
 } from 'antd';
-import styled from 'styled-components';
 import dayjs from 'dayjs';
 import { HeartTwoTone, HeartFilled, RightOutlined } from '@ant-design/icons';
 import { getQuestionDetail, getQuestionCommentList, likeComment } from '@/api';
 import { IQuestion, IComment } from '@/types';
 import Markdown from '@/components/markdown';
 import { goTo } from '@/utils';
+import './detail.less';
 
 const { Title } = Typography;
-
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0;
-`;
-
-const StyledQuestionContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-const StyledTitle = styled(Title)`
-  text-align: center;
-`;
-
-const StyledTagWrapper = styled.div`
-  text-align: center;
-  margin-bottom: 40px;
-`;
-
-const StyledButton = styled(Button)`
-  width: 100px;
-  margin-top: 20px;
-`;
 
 export default ({ location, history }: IRouteComponentProps) => {
   const [detail, setDetail] = useState<IQuestion>();
@@ -89,11 +63,13 @@ export default ({ location, history }: IRouteComponentProps) => {
   return (
     <Spin spinning={loading}>
       <BackTop />
-      <StyledWrapper>
+      <div className="detail-wrapper">
         {detail && Object.keys(detail).length ? (
-          <StyledQuestionContainer>
-            <StyledTitle level={3}>{detail.name}</StyledTitle>
-            <StyledTagWrapper>
+          <div className="question-wrapper">
+            <Title level={3} style={{ textAlign: 'center' }}>
+              {detail.name}
+            </Title>
+            <div className="tag-wrapper">
               {detail.type.map((item) => (
                 <Tag color="#f50" key={item}>
                   {item}
@@ -102,9 +78,10 @@ export default ({ location, history }: IRouteComponentProps) => {
               <Tag color="#f56c6c" key={detail.company}>
                 {detail.company}
               </Tag>
-            </StyledTagWrapper>
+            </div>
             <Markdown content={detail.content} />
-            <StyledButton
+            <Button
+              style={{ width: 100, marginTop: 20 }}
               type="primary"
               shape="round"
               icon={<RightOutlined />}
@@ -115,14 +92,14 @@ export default ({ location, history }: IRouteComponentProps) => {
               }
             >
               去答题
-            </StyledButton>
-          </StyledQuestionContainer>
+            </Button>
+          </div>
         ) : null}
         <Divider />
         {list.length ? (
           <div>
             {list.map((item) => (
-              <>
+              <div key={item.commentId}>
                 <Comment
                   author={item.userName}
                   avatar={
@@ -152,11 +129,11 @@ export default ({ location, history }: IRouteComponentProps) => {
                   ]}
                 />
                 <Divider style={{ margin: '0 0 12px' }} />
-              </>
+              </div>
             ))}
           </div>
         ) : null}
-      </StyledWrapper>
+      </div>
     </Spin>
   );
 };

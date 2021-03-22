@@ -1,19 +1,10 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Markdown from '@/components/markdown';
-import styled from 'styled-components';
-
-const StyledWrapper = styled.div`
-  margin: 100px auto 0;
-  width: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
+import './index.less';
 
 export default () => {
   return (
-    <StyledWrapper>
+    <div className="author-wrapper">
       <Markdown
         content={`
 笔者网名 yck，目前两年多前端经验，就职于酷家乐基础架构组。我们公司杭州、上海、成都都有研发中心，欢迎投递简历至笔者的邮箱：<zx597813039@gmail.com>。
@@ -27,6 +18,6 @@ export default () => {
 - [公众号：前端真好玩](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/20191223215610.jpeg)
       `}
       />
-    </StyledWrapper>
+    </div>
   );
 };

@@ -1,52 +1,17 @@
 import React, { useCallback } from 'react';
-import styled from 'styled-components';
 import { Typography, Button, Row, Col } from 'antd';
 import { Link } from 'umi';
 import { goTo } from '@/utils';
+import './index.less';
 
 const { Title, Text } = Typography;
-
-const StyledWrapper = styled.div`
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
-
-const StyledRow = styled(Row)`
-  border-radius: 2px;
-  overflow: hidden;
-  .ant-col {
-    position: relative;
-
-    h5 {
-      position: absolute;
-      left: 30px;
-      bottom: 6px;
-      color: white;
-    }
-  }
-  a {
-    width: 100%;
-  }
-  img {
-    object-fit: cover;
-    width: 100%;
-    height: 160px;
-    transition: all 0.36s ease-out;
-  }
-  img:hover {
-    transform: scale(1.04);
-  }
-`;
 
 export default () => {
   const handleOpen = useCallback(() => {
     goTo('https://github.com/KieSun/fucking-frontend');
   }, []);
   return (
-    <StyledWrapper>
+    <div className="home-wrapper">
       <img
         style={{ width: 600, height: 280, objectFit: 'cover' }}
         src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/20190728231530.jpeg"
@@ -75,7 +40,7 @@ export default () => {
         >
           精彩推荐
         </Title>
-        <StyledRow gutter={24}>
+        <Row gutter={24} className="home-row-wrapper">
           <Col span="8">
             <Link to="/questions">
               <img
@@ -103,8 +68,8 @@ export default () => {
               <Title level={5}>联系作者</Title>
             </Link>
           </Col>
-        </StyledRow>
+        </Row>
       </div>
-    </StyledWrapper>
+    </div>
   );
 };

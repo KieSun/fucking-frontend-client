@@ -6,11 +6,16 @@ import 'github-markdown-css';
 import ReactMarkdown from 'react-markdown';
 
 SyntaxHighlighter.registerLanguage('js', js);
+SyntaxHighlighter.registerLanguage('', js);
 
 const renderers = {
   code: ({ value = '', language = 'javascript' }) => {
     return (
-      <SyntaxHighlighter style={github} language={language} children={value} />
+      <SyntaxHighlighter
+        style={github}
+        language={'javascript'}
+        children={value}
+      />
     );
   },
 };

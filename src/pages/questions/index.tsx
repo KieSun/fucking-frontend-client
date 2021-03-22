@@ -1,18 +1,8 @@
 import React, { useEffect, useCallback, useState, useMemo } from 'react';
 import { Tag, Table, Modal, Button } from 'antd';
 import { Link } from 'umi';
-import styled from 'styled-components';
 import { getQuestionList } from '@/api';
 import { IQuestion } from '@/types';
-
-const StyledContainer = styled.div`
-  padding: 20px 0;
-
-  & > div {
-    margin-top: 20px;
-    width: 100%;
-  }
-`;
 
 export default () => {
   const [page, setPage] = React.useState(1);
@@ -91,7 +81,7 @@ export default () => {
   }, [isModalVisible]);
 
   return (
-    <StyledContainer>
+    <div className="question-list-wrapper">
       <Modal
         title="提交面试题"
         visible={isModalVisible}
@@ -100,7 +90,11 @@ export default () => {
       >
         将面试题发送至邮箱：zx597813039@gmail.com，采纳既有福利相赠！
       </Modal>
-      <Button type="primary" style={{ width: 120 }} onClick={handleClick}>
+      <Button
+        type="primary"
+        style={{ width: 120, marginBottom: 20 }}
+        onClick={handleClick}
+      >
         提交面试题
       </Button>
       <Table
@@ -113,6 +107,6 @@ export default () => {
           total: pageCount,
         }}
       />
-    </StyledContainer>
+    </div>
   );
 };
