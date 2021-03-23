@@ -110,7 +110,8 @@ export default ({ location, history }: IRouteComponentProps) => {
                   content={<Markdown content={item.content} />}
                   datetime={
                     <span>
-                      {dayjs(item.updatedAt).format('YYYY-MM-DD hh:mm:ss')}
+                      更新于{' '}
+                      {dayjs(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
                     </span>
                   }
                   actions={[

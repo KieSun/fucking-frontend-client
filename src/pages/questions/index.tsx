@@ -17,7 +17,6 @@ export default () => {
       const { list, count } = await getQuestionList({
         page,
       });
-      console.log(list);
       setPageCount(count);
       setListData(list);
     } catch (e) {
