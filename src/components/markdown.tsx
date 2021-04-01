@@ -1,19 +1,15 @@
 import React from 'react';
-import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { github } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import js from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import 'github-markdown-css';
 import ReactMarkdown from 'react-markdown';
-
-SyntaxHighlighter.registerLanguage('js', js);
-SyntaxHighlighter.registerLanguage('', js);
 
 const renderers = {
   code: ({ value = '', language = 'javascript' }) => {
     return (
       <SyntaxHighlighter
-        style={github}
-        language={'javascript'}
+        style={a11yDark}
+        language={language}
         children={value}
       />
     );

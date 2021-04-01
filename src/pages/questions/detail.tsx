@@ -114,20 +114,6 @@ export default ({ location, history }: IRouteComponentProps) => {
                       {dayjs(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}
                     </span>
                   }
-                  actions={[
-                    <span onClick={() => handleLikeComment(item.commentId)}>
-                      {liked.includes(item.commentId) ? (
-                        <HeartFilled
-                          style={{ fontSize: '20px', color: '#eb2f96' }}
-                        />
-                      ) : (
-                        <HeartTwoTone
-                          twoToneColor="#eb2f96"
-                          style={{ fontSize: '20px' }}
-                        />
-                      )}
-                    </span>,
-                  ]}
                 />
                 <Divider style={{ margin: '0 0 12px' }} />
               </div>
