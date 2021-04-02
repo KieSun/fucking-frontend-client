@@ -17,25 +17,17 @@ export default () => {
         src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/20190728231530.jpeg"
         alt=""
       />
-      <Title style={{ marginTop: 20 }}>Fucking Front End</Title>
-      <Text style={{ fontSize: 20, marginBottom: 20 }} type="secondary">
+      <Title style={{ marginTop: 20 }}>干爆前端</Title>
+      <Text style={{ fontSize: 20 }} type="secondary">
         做杭州市最好的前端进大厂学习资料
       </Text>
-      <Button
-        type="primary"
-        size="large"
-        style={{ width: 120 }}
-        onClick={handleOpen}
-      >
-        点个 Star
-      </Button>
       <div>
         <Title
           level={2}
           style={{
             fontWeight: 'lighter',
             color: 'rgb(49, 70, 89)',
-            margin: '60px 0 40px',
+            margin: '40px 0',
           }}
         >
           精彩推荐

@@ -11,7 +11,7 @@ import {
   Button,
 } from 'antd';
 import dayjs from 'dayjs';
-import { HeartTwoTone, HeartFilled, RightOutlined } from '@ant-design/icons';
+import { RightOutlined } from '@ant-design/icons';
 import { getQuestionDetail, getQuestionCommentList, likeComment } from '@/api';
 import { IQuestion, IComment } from '@/types';
 import Markdown from '@/components/markdown';

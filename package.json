@@ -26,7 +26,6 @@
     "antd": "^4.14.0",
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
-    "github-markdown-css": "^4.0.0",
     "react-markdown": "^5.0.3",
     "react-syntax-highlighter": "^15.4.3",
     "umi": "^3.4.2"

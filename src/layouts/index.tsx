@@ -1,41 +1,60 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Tabs } from 'antd';
+import { Button, Typography } from 'antd';
 import { IRouteComponentProps } from 'umi';
+import dayjs from 'dayjs';
 import styles from './index.less';
 
-const { TabPane } = Tabs;
-
-const routes = ['/', '/interview', '/questions', '/author'];
+const { Text, Link } = Typography;
 
 export default function Layout({
   children,
   location,
   history,
 }: IRouteComponentProps) {
-  const [value, setValue] = useState('');
-
-  useEffect(() => {
-    routes.forEach((item) => {
-      if (location.pathname.includes(item)) {
-        setValue(item);
-      }
-    });
-  }, [location.pathname]);
-
   const handleChange = useCallback((newValue: string) => {
-    setValue(newValue);
     history.push(newValue);
   }, []);
 
   return (
-    <div>
-      <Tabs activeKey={value} onChange={handleChange} centered>
-        <TabPane tab="首页" key={routes[0]} />
-        <TabPane tab="十五万字面试资料" key={routes[1]} />
-        <TabPane tab="每日大厂真题" key={routes[2]} />
-        <TabPane tab="联系作者" key={routes[3]} />
-      </Tabs>
-      <div style={{ maxWidth: 1200, margin: '0 auto' }}>{children}</div>
+    <div
+      style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+    >
+      <header className={styles.header}>
+        <div>
+          <Button type="text" onClick={() => handleChange('/')}>
+            首页
+          </Button>
+          <Button type="text" onClick={() => handleChange('/interview')}>
+            十五万字面试资料
+          </Button>
+          <Button type="text" onClick={() => handleChange('/questions')}>
+            每日大厂真题
+          </Button>
+          <Button
+            type="text"
+            href="https://github.com/KieSun/fucking-frontend"
+            target="_blank"
+          >
+            Github
+          </Button>
+          <Button type="text" onClick={() => handleChange('/author')}>
+            联系作者
+          </Button>
+        </div>
+      </header>
+      <div style={{ maxWidth: 1200, margin: '0 auto', flex: 1 }}>
+        {children}
+      </div>
+      <footer className={styles.footer}>
+        <div>
+          <Text type="secondary">
+            © 2021 - {dayjs(new Date()).format('YYYY')} | {''}
+          </Text>
+          <Link href="https://beian.miit.gov.cn/#/Integrated/index">
+            浙ICP备18011699号-2
+          </Link>
+        </div>
+      </footer>
       {location.pathname !== '/' ? (
         <div className={styles.fixWrapper}>
           <p>加入前端进阶交流群</p>
