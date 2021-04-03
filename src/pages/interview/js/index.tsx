@@ -28,16 +28,18 @@ export default () => {
         </Anchor>
       ) : null}
       <Markdown content={content} />
-      <GitalkComponent
-        options={{
-          clientID: '11bb5badb757dbb056f5',
-          clientSecret: '5972c74f5888f08fd5d791f2030608d541175b2b',
-          repo: 'fucking-frontend-client',
-          owner: 'KieSun',
-          admin: ['KieSun'],
-          id: location.pathname,
-        }}
-      />
+      <div className={styles.gitTalk}>
+        <GitalkComponent
+          options={{
+            clientID: '11bb5badb757dbb056f5',
+            clientSecret: '5972c74f5888f08fd5d791f2030608d541175b2b',
+            repo: 'fucking-frontend-client',
+            owner: 'KieSun',
+            admin: ['KieSun'],
+            id: location.pathname,
+          }}
+        />
+      </div>
     </div>
   );
 };
