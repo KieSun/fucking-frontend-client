@@ -36,7 +36,7 @@ export default () => {
         </Anchor>
       ) : null}
       <Markdown content={content} />
-      <div id={idName}>
+      <div id={styles.gitTalk}>
         <GitalkComponent
           options={{
             clientID: '11bb5badb757dbb056f5',
