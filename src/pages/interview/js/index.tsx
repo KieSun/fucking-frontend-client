@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Markdown from '@/components/markdown';
-import { Anchor } from 'antd';
+import { Anchor, Breadcrumb, BackTop } from 'antd';
 import 'gitalk/dist/gitalk.css';
 import GitalkComponent from 'gitalk/dist/gitalk-component';
 import content from './content.md';
@@ -10,6 +10,7 @@ const { Link } = Anchor;
 
 export default () => {
   const [ids, setIds] = useState<string[]>([]);
+
   const idName = `#${styles.gitTalk}`;
   useEffect(() => {
     const headers = document.querySelectorAll(`.${styles.interviewWrapper} h2`);
@@ -23,8 +24,10 @@ export default () => {
     }
     setIds(ids);
   }, []);
+
   return (
     <div className={styles.interviewWrapper}>
+      <BackTop />
       {ids.length ? (
         <Anchor className={styles.anchorWrapper} targetOffset={40}>
           {ids.map((id) => {
@@ -35,7 +38,11 @@ export default () => {
           })}
         </Anchor>
       ) : null}
-      <Markdown content={content} />
+      <Breadcrumb style={{ marginBottom: 20, fontSize: 16 }}>
+        <Breadcrumb.Item href="./">返回上一页</Breadcrumb.Item>
+        <Breadcrumb.Item>{document.title}</Breadcrumb.Item>
+      </Breadcrumb>
+      <Markdown content={content} needLock />
       <div id={styles.gitTalk}>
         <GitalkComponent
           options={{

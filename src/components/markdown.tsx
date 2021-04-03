@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import ReactMarkdown from 'react-markdown';
+import { message } from 'antd';
 import styles from './index.less';
+import { getLockStatus } from '@/api';
+import { getCookie } from './utils';
+
+const cookie = getCookie() || '';
+const token = cookie.slice(cookie.length - 6);
 
 const renderers = {
   code: ({ value = '', language = 'javascript' }) => {
@@ -31,8 +37,48 @@ const renderers = {
   },
 };
 
-export default ({ content }: { content: string }) => {
+let timer: NodeJS.Timeout;
+
+export default ({
+  content,
+  needLock = false,
+}: {
+  content: string;
+  needLock?: boolean;
+}) => {
   const newContent = content.replace('[去答题](#issue-comment-box)', '');
+  const [isLocked, setIsLocked] = useState(false);
+  const [articleContent, setArticleContent] = useState(newContent);
+  useEffect(() => {
+    fetchData();
+    return () => {
+      timer && clearInterval(timer);
+    };
+  }, []);
+
+  const fetchData = useCallback(async () => {
+    if (!needLock) return;
+    const { locked = true } = await getLockStatus(token);
+    if (locked) {
+      if (!isLocked) {
+        setIsLocked(true);
+        setArticleContent(newContent);
+        setTimeout(() => {
+          clearInterval(timer);
+        }, 60000);
+      }
+    } else {
+      if (!isLocked) {
+        setArticleContent(newContent.slice(0, 1000));
+        if (!timer) {
+          timer = setInterval(() => {
+            fetchData();
+          }, 5000);
+        }
+      }
+    }
+  }, [isLocked]);
+
   return (
     <div className={styles.markdownBody}>
       <ReactMarkdown
@@ -40,8 +86,36 @@ export default ({ content }: { content: string }) => {
         allowDangerousHtml
         linkTarget="_blank"
       >
-        {newContent}
+        {articleContent}
       </ReactMarkdown>
+      {needLock && !isLocked ? (
+        <div className={styles.locker}>
+          <div className={styles.mask} />
+          <div className="info">
+            <div>
+              <p className="text-center">
+                扫码或搜索：
+                <strong>前端真好玩</strong>
+              </p>
+              <p className="text-center">
+                <span>
+                  发送验证码 <strong>{token}</strong>
+                </span>
+              </p>
+              <p className="text-center">
+                关注期间<strong>无限制</strong>
+                浏览本站所有内容，助你一年内薪资上涨 5K 以上
+              </p>
+            </div>
+            <div className="text-center">
+              <img
+                width={400}
+                src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/20191223215610.jpeg"
+              />
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 };

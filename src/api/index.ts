@@ -22,10 +22,10 @@ const PREFIX = isProd ? '' : '/api';
 
 axios.interceptors.response.use(
   (response): any => {
-    const { code, data } = response.data as ResponseData;
+    const { data } = response.data as ResponseData;
 
-    if (code === 200) {
-      return data as any;
+    if (response.status === 200) {
+      return (data || response.data) as any;
     }
     throw new Error('服务器出错');
   },
@@ -58,4 +58,12 @@ export const likeComment = async (id: number) => {
   return axios.post('${PREFIX}/comment/like', {
     id,
   });
+};
+
+export const getLockStatus = async (
+  token: string,
+): Promise<{ locked: boolean }> => {
+  return axios.get(
+    `https://api.yuchengkai.cn/getSubscribedStatus?token=${token}`,
+  );
 };

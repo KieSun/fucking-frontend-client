@@ -38,3 +38,21 @@
     overflow: hidden;
   }
 }
+
+.locker {
+  position: relative;
+  top: -200px;
+  text-align: center;
+
+  .mask {
+    height: 200px;
+    width: 100%;
+    background: -webkit-gradient(
+      linear,
+      0 top,
+      0 bottom,
+      from(rgba(255, 255, 255, 0)),
+      to(#fff)
+    );
+  }
+}
