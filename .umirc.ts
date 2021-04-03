@@ -21,6 +21,12 @@ export default defineConfig({
         },
         {
           exact: true,
+          path: '/interview/js',
+          component: '@/pages/interview/js',
+          title: 'js',
+        },
+        {
+          exact: true,
           path: '/questions',
           component: '@/pages/questions',
           title: '每日一道大厂真题',

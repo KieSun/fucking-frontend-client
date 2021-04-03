@@ -14,6 +14,21 @@ const renderers = {
       />
     );
   },
+  heading: ({ level, children }) => {
+    const value = children[0].props.value;
+    switch (level) {
+      case 1:
+        return <h1>{children}</h1>;
+      case 2:
+        return <h2 id={value}>{children}</h2>;
+      case 3:
+        return <h3>{children}</h3>;
+      case 4:
+        return <h4>{children}</h4>;
+      default:
+        return <h6>{children}</h6>;
+    }
+  },
 };
 
 export default ({ content }: { content: string }) => {

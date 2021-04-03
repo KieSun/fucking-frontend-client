@@ -1,19 +1,14 @@
-import React, { useCallback } from 'react';
-import { Typography, Button, Row, Col } from 'antd';
+import React from 'react';
+import { Typography, Row, Col } from 'antd';
 import { Link } from 'umi';
-import { goTo } from '@/utils';
 import styles from './index.less';
 
 const { Title, Text } = Typography;
 
 export default () => {
-  const handleOpen = useCallback(() => {
-    goTo('https://github.com/KieSun/fucking-frontend');
-  }, []);
   return (
     <div className={styles.homeWrapper}>
       <img
-        style={{ width: 600, height: 280, objectFit: 'cover' }}
         src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/20190728231530.jpeg"
         alt=""
       />
