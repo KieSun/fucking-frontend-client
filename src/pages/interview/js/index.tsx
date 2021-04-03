@@ -10,25 +10,33 @@ const { Link } = Anchor;
 
 export default () => {
   const [ids, setIds] = useState<string[]>([]);
+  const idName = `#${styles.gitTalk}`;
   useEffect(() => {
     const headers = document.querySelectorAll(`.${styles.interviewWrapper} h2`);
     const ids: string[] = [];
     headers?.forEach((header) => {
       ids.push(header.id);
     });
+    const comment = document.querySelector(idName);
+    if (comment) {
+      ids.push(idName);
+    }
     setIds(ids);
   }, []);
   return (
     <div className={styles.interviewWrapper}>
       {ids.length ? (
         <Anchor className={styles.anchorWrapper} targetOffset={40}>
-          {ids.map((id) => (
-            <Link href={`#${id}`} title={id} key={id} />
-          ))}
+          {ids.map((id) => {
+            if (id !== idName) {
+              return <Link href={`#${id}`} title={id} key={id} />;
+            }
+            return <Link href={idName} title="参与讨论" key={id} />;
+          })}
         </Anchor>
       ) : null}
       <Markdown content={content} />
-      <div className={styles.gitTalk}>
+      <div id={idName}>
         <GitalkComponent
           options={{
             clientID: '11bb5badb757dbb056f5',
