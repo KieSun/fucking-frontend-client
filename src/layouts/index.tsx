@@ -20,6 +20,7 @@ export default function Layout({
 
   const idName = `#${markdownStyles.gitTalk}`;
   useEffect(() => {
+    window.scrollTo(0, 0);
     const headers = document.querySelectorAll(
       `.${markdownStyles.contentWrapper} h2`,
     );
