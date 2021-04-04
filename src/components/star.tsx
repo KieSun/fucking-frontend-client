@@ -1,7 +1,5 @@
 import React from 'react';
-import { Row, Col, Button, Typography } from 'antd';
-
-const { Text } = Typography;
+import { Row, Col, Button } from 'antd';
 
 export default () => {
   return (
