@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import ReactMarkdown from 'react-markdown';
-import { message } from 'antd';
 import styles from './index.less';
 import { getLockStatus } from '@/api';
 import { getCookie } from './utils';

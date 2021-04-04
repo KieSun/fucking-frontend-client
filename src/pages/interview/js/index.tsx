@@ -1,47 +1,21 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Markdown from '@/components/markdown';
 import { Anchor, Breadcrumb, BackTop } from 'antd';
 import 'gitalk/dist/gitalk.css';
 import GitalkComponent from 'gitalk/dist/gitalk-component';
 import content from './content.md';
-import styles from './index.less';
-
-const { Link } = Anchor;
+import styles from '@/styles/markdown.less';
+import Star from '@/components/star';
 
 export default () => {
-  const [ids, setIds] = useState<string[]>([]);
-
-  const idName = `#${styles.gitTalk}`;
-  useEffect(() => {
-    const headers = document.querySelectorAll(`.${styles.interviewWrapper} h2`);
-    const ids: string[] = [];
-    headers?.forEach((header) => {
-      ids.push(header.id);
-    });
-    const comment = document.querySelector(idName);
-    if (comment) {
-      ids.push(idName);
-    }
-    setIds(ids);
-  }, []);
-
   return (
-    <div className={styles.interviewWrapper}>
+    <div className={styles.contentWrapper}>
       <BackTop />
-      {ids.length ? (
-        <Anchor className={styles.anchorWrapper} targetOffset={40}>
-          {ids.map((id) => {
-            if (id !== idName) {
-              return <Link href={`#${id}`} title={id} key={id} />;
-            }
-            return <Link href={idName} title="参与讨论" key={id} />;
-          })}
-        </Anchor>
-      ) : null}
       <Breadcrumb style={{ marginBottom: 20, fontSize: 16 }}>
         <Breadcrumb.Item href="./">返回上一页</Breadcrumb.Item>
         <Breadcrumb.Item>{document.title}</Breadcrumb.Item>
       </Breadcrumb>
+      <Star />
       <Markdown content={content} needLock />
       <div id={styles.gitTalk}>
         <GitalkComponent
