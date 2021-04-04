@@ -65,7 +65,11 @@ export default function Layout({
         justify="center"
         gutter={100}
         wrap={false}
-        style={{ width: '80%', margin: '0 auto' }}
+        style={{
+          width: '80%',
+          margin: '0 auto',
+          minHeight: 'calc(100vh - 132px)',
+        }}
       >
         <Col md={{ span: 16 }} sm={{ span: 24 }}>
           {children}

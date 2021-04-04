@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, Row, Col } from 'antd';
 import { Link } from 'umi';
 import styles from './index.less';
+import rowStyles from '@/styles/row.less';
 
 const { Title, Text } = Typography;
 
@@ -27,7 +28,7 @@ export default () => {
         >
           精彩推荐
         </Title>
-        <Row gutter={24} className={styles.homeRowWrapper}>
+        <Row gutter={24} className={rowStyles.rowWrapper}>
           <Col span="8">
             <Link to="/questions">
               <img
