@@ -26,7 +26,7 @@ export default () => {
             owner: 'KieSun',
             admin: ['KieSun'],
             id: location.pathname,
-            createIssueManually: false,
+            createIssueManually: true,
           }}
         />
       </div>
