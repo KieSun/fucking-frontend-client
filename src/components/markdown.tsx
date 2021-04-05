@@ -16,6 +16,7 @@ const renderers = {
         style={a11yDark}
         language={language}
         children={value}
+        showLineNumbers
       />
     );
   },

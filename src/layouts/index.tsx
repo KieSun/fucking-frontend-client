@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Button, Typography, Row, Col, Anchor } from 'antd';
-import { IRouteComponentProps } from 'umi';
+import { IRouteComponentProps, Link as UmiLink } from 'umi';
 import dayjs from 'dayjs';
 import styles from './index.less';
 import markdownStyles from '@/styles/markdown.less';
@@ -76,7 +76,7 @@ export default function Layout({
           {children}
         </Col>
         {location.pathname === '/' ? null : (
-          <Col md={{ span: 4 }} sm={{ span: 0 }}>
+          <Col style={{ width: '150px', boxSizing: 'content-box' }}>
             <Row style={{ flexDirection: 'column' }} gutter={[0, 60]}>
               <Col>
                 {location.pathname !== '/' ? (
@@ -87,6 +87,16 @@ export default function Layout({
                       width="100%"
                       src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/21/16163277585930.jpeg"
                     />
+                  </div>
+                ) : null}
+              </Col>
+              <Col>
+                {location.pathname !== '/' ? (
+                  <div className={styles.update}>
+                    <p>最近更新</p>
+                    <UmiLink to="/interview/js">
+                      涨薪 5K 以上系列：JS 基础篇
+                    </UmiLink>
                   </div>
                 ) : null}
               </Col>
