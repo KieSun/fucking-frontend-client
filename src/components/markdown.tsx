@@ -110,7 +110,7 @@ export default ({
             <div className="text-center">
               <img
                 width={400}
-                src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/20191223215610.jpeg"
+                src="https://yck-1254263422.file.myqcloud.com/20191223215610.jpeg"
               />
             </div>
           </div>

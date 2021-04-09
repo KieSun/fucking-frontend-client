@@ -85,7 +85,7 @@ export default function Layout({
                     <p>扫描二维码自动拉群</p>
                     <img
                       width="100%"
-                      src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/21/16163277585930.jpeg"
+                      src="https://yck-1254263422.file.myqcloud.com/2021/03/21/16163277585930.jpeg"
                     />
                   </div>
                 ) : null}

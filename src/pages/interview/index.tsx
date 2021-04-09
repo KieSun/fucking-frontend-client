@@ -17,7 +17,7 @@ export default () => {
       <Markdown
         content={`
 <p style='text-align: center'>
-  <img src='https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/23/16165050809917.png' width='70%' />
+  <img src='https://yck-1254263422.file.myqcloud.com/2021/03/23/16165050809917.png' width='70%' />
 </p>
 内容包含了 JS、浏览器、性能相关、安全知识、框架及计算机基础知识，字数达 10 万+，希望能对你的面试有所帮助。
 
@@ -40,7 +40,7 @@ export default () => {
             <Link to="/interview/js">
               <img
                 width="100%"
-                src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/04/04/16175456197561.jpg"
+                src="https://yck-1254263422.file.myqcloud.com/2021/04/04/16175456197561.jpg"
                 alt=""
               />
               <Title level={5}>JS 基础</Title>

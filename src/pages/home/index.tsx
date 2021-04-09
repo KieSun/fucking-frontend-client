@@ -10,7 +10,7 @@ export default () => {
   return (
     <div className={styles.homeWrapper}>
       <img
-        src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/20190728231530.jpeg"
+        src="https://yck-1254263422.file.myqcloud.com/20190728231530.jpeg"
         alt=""
       />
       <Title style={{ marginTop: 20 }}>干爆前端</Title>
@@ -32,7 +32,7 @@ export default () => {
           <Col span="8">
             <Link to="/questions">
               <img
-                src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/21/16163319949568.jpg"
+                src="https://yck-1254263422.file.myqcloud.com/2021/03/21/16163319949568.jpg"
                 alt=""
               />
               <Title level={5}>每日一道大厂真题</Title>
@@ -41,7 +41,7 @@ export default () => {
           <Col span="8">
             <Link to="/interview">
               <img
-                src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/21/16163319195983.jpg"
+                src="https://yck-1254263422.file.myqcloud.com/2021/03/21/16163319195983.jpg"
                 alt=""
               />
               <Title level={5}>十五万字面试资料</Title>
@@ -50,7 +50,7 @@ export default () => {
           <Col span="8">
             <Link to="/author">
               <img
-                src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/21/16163321653767.jpg"
+                src="https://yck-1254263422.file.myqcloud.com/2021/03/21/16163321653767.jpg"
                 alt=""
               />
               <Title level={5}>联系作者</Title>

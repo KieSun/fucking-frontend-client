@@ -9,7 +9,7 @@ export default () => {
       <Col span={12}>
         <img
           width="100%"
-          src="https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/04/04/16175364502138.png"
+          src="https://yck-1254263422.file.myqcloud.com/2021/04/04/16175364502138.png"
           alt=""
         />
       </Col>

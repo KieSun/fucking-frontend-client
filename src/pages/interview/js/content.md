@@ -60,7 +60,7 @@ const p1 = {
 
 原始类型中除了 `null`，其它类型都可以通过 `typeof` 来判断。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/26/16167245597616.jpg)
+![](https://yck-1254263422.file.myqcloud.com/2021/03/26/16167245597616.jpg)
 
 `typeof null` 的值为 `object`，这是因为一个久远的 Bug，没有细究的必要，了解即可。如果想具体判断 `null` 类型的话直接 `xxx === null` 即可。
 
@@ -98,7 +98,7 @@ class CheckIsNumber {
 
 前几种方式或多或少都存在一些缺陷，`Object.prototype.toString` 综合来看是最佳选择，能判断的类型最完整。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/26/16167262728324.jpg)
+![](https://yck-1254263422.file.myqcloud.com/2021/03/26/16167262728324.jpg)
 
 上图是一部分类型判断，更多的就不列举了，`[object XXX]` 中的 `XXX` 就是判断出来的类型。
 
@@ -106,7 +106,7 @@ class CheckIsNumber {
 
 同时还存在一些判断特定类型的 API，选了两个常见的：
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/26/16167498169233.jpg)
+![](https://yck-1254263422.file.myqcloud.com/2021/03/26/16167498169233.jpg)
 
 ### 常见考点
 
@@ -160,7 +160,7 @@ Number('zb') // -> NaN
 
 `==` 操作符
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043719.png)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-043719.png)
 
 ### 常见考点
 
@@ -262,7 +262,7 @@ fn2()
 
 先来说下数据存放的正确规则是：局部、占用空间确定的数据，一般会存放在栈中，否则就在堆中（也有例外）。 那么接下来我们可以通过 Chrome 来帮助我们验证这个说法说法。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/27/16168151767374.jpg)
+![](https://yck-1254263422.file.myqcloud.com/2021/03/27/16168151767374.jpg)
 
 上图中画红框的位置我们能看到一个内部的对象 `[[Scopes]]`，其中存放着变量 `a`，该对象是被存放在堆上的，其中包含了闭包、全局对象等等内容，因此我们能通过闭包访问到本该销毁的变量。
 
@@ -277,7 +277,7 @@ function fn() {
 }
 ```
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/27/16168161295337.jpg)
+![](https://yck-1254263422.file.myqcloud.com/2021/03/27/16168161295337.jpg)
 
 从上图我们能发现全局下声明的变量，如果是 var 的话就直接被挂到 `globe` 上，如果是其他关键字声明的话就被挂到 `Script` 上。虽然这些内容同样还是存在 `[[Scopes]]`，但是全局变量应该是存放在静态区域的，因为全局变量无需进行垃圾回收，等需要回收的时候整个应用都没了。
 
@@ -285,7 +285,7 @@ function fn() {
 
 > 这里为什么要说可能，是因为 JS 是门动态类型语言，一个变量声明时可以是原始类型，马上又可以赋值为对象类型，然后又回到原始类型。这样频繁的在堆栈上切换存储位置，内部引擎是不是也会有什么优化手段，或者干脆全部都丢堆上？只有 `const` 声明的原始类型才一定存在栈上？当然这只是笔者的一个推测，暂时没有深究，读者可以忽略这段瞎想。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/27/16168167470524.jpg)
+![](https://yck-1254263422.file.myqcloud.com/2021/03/27/16168167470524.jpg)
 
 因此笔者对于原始类型存储位置的理解为：**局部变量才是被存储在栈上，全局变量存在静态区域上，其它都存储在堆上。**
 
@@ -355,7 +355,7 @@ console.log(t.name) // 'undefined'
 
 其实作用域链这个东西我们在闭包小结中已经看到过它的实体了：`[[Scopes]]`
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/27/16168151767374.jpg)
+![](https://yck-1254263422.file.myqcloud.com/2021/03/27/16168151767374.jpg)
 
 图中的 `[[Scopes]]` 是个数组，作用域的一层层往上寻找就等同于遍历 `[[Scopes]]`。
 
@@ -368,7 +368,7 @@ console.log(t.name) // 'undefined'
 
 原型在面试里只需要几句话、一张图的概念就够用了，没人会让你长篇大论讲上一堆内容的，问原型更多的是为了引出继承这个话题。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/27/16168535874977.png)
+![](https://yck-1254263422.file.myqcloud.com/2021/03/27/16168535874977.png)
 
 根据上图，原型总结下来的概念为：
 
@@ -453,11 +453,11 @@ console.log(b.age) // 2
 
 比如说只支持 JSON 支持的类型，JSON 是门通用的语言，并不支持 JS 中的所有类型。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/03/28/16169243754994.jpg)
+![](https://yck-1254263422.file.myqcloud.com/2021/03/28/16169243754994.jpg)
 
 同时还存在不能处理循环引用的问题：
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043724.png)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-043724.png)
 
 如果想解决以上问题，我们可以通过递归的方式来实现代码：
 
@@ -471,7 +471,7 @@ function deepClone(obj) {
     }
     let newObj
     if (obj instanceof Array) {
-      newObj = []     
+      newObj = []
     } else if (obj instanceof Function) {
       newObj = function() {
         return obj.apply(this, arguments)
@@ -595,7 +595,7 @@ console.log('1', a) // -> ？
 
 其实当遇到异步的代码时，只有当遇到 Task、Microtask 的时候才会被挂起并在需要执行的时候加入到 Task（有多种 Task） 队列中。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/2021/04/04/16175397496891.jpg)
+![](https://yck-1254263422.file.myqcloud.com/2021/04/04/16175397496891.jpg)
 
 从图上我们得出两个疑问：
 
@@ -861,7 +861,7 @@ function now() {
  */
 function debounce (func, wait = 50, immediate = true) {
   let timer, context, args
-  
+
   // 延迟执行函数
   const later = () => setTimeout(() => {
     // 延迟函数执行完毕，清空缓存的定时器序号
@@ -915,7 +915,7 @@ function debounce (func, wait = 50, immediate = true) {
  * @param  {object}     options   如果想忽略开始函数的的调用，传入{leading: false}。
  *                                如果想忽略结尾函数的调用，传入{trailing: false}
  *                                两者不能共存，否则函数不能执行
- * @return {function}             返回客户调用函数   
+ * @return {function}             返回客户调用函数
  */
 _.throttle = function(func, wait, options) {
     var context, args, result;

@@ -15,7 +15,7 @@ export default () => {
 
 - [Github](https://github.com/KieSun)
 - [掘金](https://juejin.cn/user/712139233840407/posts)
-- [公众号：前端真好玩](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/20191223215610.jpeg)
+- [公众号：前端真好玩](https://yck-1254263422.file.myqcloud.com/20191223215610.jpeg)
       `}
       />
     </div>
