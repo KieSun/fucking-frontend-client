@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import Markdown from '@/components/markdown';
 import { Button, Col, Row, Typography } from 'antd';
 import { goTo } from '@/utils';
-import styles from './index.less';
+import styles from '@/styles/wrapper.less';
 import { Link } from 'umi';
 import rowStyles from '@/styles/row.less';
 
@@ -13,7 +13,7 @@ export default () => {
     goTo('https://yuchengkai.cn/docs/frontend/');
   }, []);
   return (
-    <div className={styles.interviewWrapper}>
+    <div className={styles.wrapper}>
       <Markdown
         content={`
 <p style='text-align: center'>

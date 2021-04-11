@@ -1,4 +1,5 @@
 import { defineConfig } from 'umi';
+import route from './route';
 
 export default defineConfig({
   title: '干爆前端',
@@ -37,7 +38,7 @@ export default defineConfig({
           component: '@/pages/questions/detail',
         },
         { exact: true, path: '/author', component: '@/pages/author' },
-      ],
+      ].concat(route),
     },
   ],
   proxy: {

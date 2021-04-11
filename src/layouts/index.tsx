@@ -50,6 +50,9 @@ export default function Layout({
           <Button type="text" onClick={() => handleChange('/questions')}>
             每日大厂真题
           </Button>
+          <Button type="text" onClick={() => handleChange('/engineered')}>
+            前端工程化
+          </Button>
           <Button
             type="text"
             href="https://github.com/KieSun/fucking-frontend"
@@ -58,7 +61,7 @@ export default function Layout({
             Github
           </Button>
           <Button type="text" onClick={() => handleChange('/author')}>
-            联系作者
+            关于
           </Button>
         </div>
       </header>
