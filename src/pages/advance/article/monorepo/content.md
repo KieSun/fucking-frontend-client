@@ -5,7 +5,7 @@
 
 monorepo 简单来说就是将多个项目整合到了一个仓库里来管理，很多开源库都采用了这种代码管理方式，比如 Vue 3.0：
 
-<img src='https://yck-1254263422.cos.ap-shanghai.myqcloud.com/uPic/1617799085854.jpg' width='70%' />
+<img src='https://yck-1254263422.file.myqcloud.com/uPic/1617799085854.jpg' width='70%' />
 
 从上图我们可以看到 packages 文件夹下存在一堆文件夹，这每个文件夹都对应一个 npm 包，我们把这一些 npm 包都管理在一个仓库下了。
 
@@ -201,7 +201,7 @@ jest --coverage --changedSince=master
 
 这个工具可以帮助我们提交规范化的 commit 信息：
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fc30d9f375c1462f98889bd26c6d91f6~tplv-k3u1fbpfcp-zoom-1.image)
+![rhBpZf](https://yck-1254263422.file.myqcloud.com/uPic/rhBpZf.jpg)
 
 上图中最重要的就是 `feat、fix` 这些信息，我们需要根据这个 type 信息来计算最终的部署版本号。
 
@@ -213,11 +213,11 @@ jest --coverage --changedSince=master
 git log -E --format=%H=%B
 ```
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/33943c05f0b04c6a8811e02bc5ebf15e~tplv-k3u1fbpfcp-zoom-1.image)
+![DbfNZv](https://yck-1254263422.file.myqcloud.com/uPic/DbfNZv.jpg)
 
 对于以上 commit，我们可以通过执行命令得出以下结果：
 
-![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/348179ad2324412bb2a629c2cc5116d3~tplv-k3u1fbpfcp-zoom-1.image)
+![DvAehb](https://yck-1254263422.file.myqcloud.com/uPic/DvAehb.jpg)
 
 当然这样分析是把当前分支的所有 commit 都分析进去了，大部分发版时候我们只需要分析上次发版至今的所有变更，因此需要修正 command 为：
 

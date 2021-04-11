@@ -48,12 +48,12 @@ export default () => {
             </Link>
           </Col>
           <Col span="8">
-            <Link to="/author">
+            <Link to="/engineered">
               <img
                 src="https://yck-1254263422.file.myqcloud.com/2021/03/21/16163321653767.jpg"
                 alt=""
               />
-              <Title level={5}>联系作者</Title>
+              <Title level={5}>前端工程化</Title>
             </Link>
           </Col>
         </Row>

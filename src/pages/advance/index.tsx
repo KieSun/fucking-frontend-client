@@ -22,6 +22,8 @@ export default () => {
 ## 全部文章
 
 - [开源项目都在用 monorepo，但是你知道到底有多少坑么？](./engineered/monorepo)
+- [揭秘自动化部署系统](./engineered/deploy)
+- [从零打造性能检测库](./engineered/performanceTest)
       `}
       />
     </div>

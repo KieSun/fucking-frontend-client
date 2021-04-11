@@ -75,7 +75,7 @@ export default function Layout({
           minHeight: 'calc(100vh - 132px)',
         }}
       >
-        <Col md={{ span: 16 }} sm={{ span: 24 }}>
+        <Col md={{ span: 20 }} sm={{ span: 24 }}>
           {children}
         </Col>
         {location.pathname === '/' ? null : (
@@ -97,9 +97,18 @@ export default function Layout({
                 {location.pathname !== '/' ? (
                   <div className={styles.update}>
                     <p>最近更新</p>
-                    <UmiLink to="/interview/js">
-                      涨薪 5K 以上系列：JS 基础篇
-                    </UmiLink>
+                    <Row gutter={[0, 10]}>
+                      <Col>
+                        <UmiLink to="/interview/js">
+                          涨薪 5K 以上系列：JS 基础篇
+                        </UmiLink>
+                      </Col>
+                      <Col>
+                        <UmiLink to="/engineered/monorepo">
+                          开源项目都在用 monorepo，但是你知道到底有多少坑么？
+                        </UmiLink>
+                      </Col>
+                    </Row>
                   </div>
                 ) : null}
               </Col>
