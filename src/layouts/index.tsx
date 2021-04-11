@@ -26,7 +26,6 @@ export default function Layout({
     );
     const ids: { id: string; value?: string }[] = [];
     headers?.forEach((header) => {
-      console.log(header);
       ids.push({
         id: header.id,
         value: (header as any).innerText!,
