@@ -74,7 +74,7 @@ export default function Layout({
           minHeight: 'calc(100vh - 132px)',
         }}
       >
-        <Col md={{ span: 18 }} sm={{ span: 24 }}>
+        <Col md={{ span: 18 }} sm={{ span: 24 }} style={{ maxWidth: 800 }}>
           {children}
         </Col>
         {location.pathname === '/' ? null : (
