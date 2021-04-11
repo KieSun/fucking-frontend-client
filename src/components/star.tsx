@@ -5,7 +5,11 @@ import Markdown from './markdown';
 export default () => {
   const [show, setShow] = useState(false);
   return (
-    <Row gutter={40} align="middle" style={{ marginBottom: 40 }}>
+    <Row
+      gutter={40}
+      align="middle"
+      style={{ margin: '0 auto 40px', width: '80%' }}
+    >
       <Col span={12}>
         <img
           width="100%"
