@@ -67,7 +67,6 @@ export default function Layout({
       </header>
       <Row
         justify="center"
-        gutter={100}
         wrap={false}
         style={{
           width: '80%',
@@ -75,11 +74,17 @@ export default function Layout({
           minHeight: 'calc(100vh - 132px)',
         }}
       >
-        <Col md={{ span: 20 }} sm={{ span: 24 }}>
+        <Col md={{ span: 18 }} sm={{ span: 24 }}>
           {children}
         </Col>
         {location.pathname === '/' ? null : (
-          <Col style={{ width: '150px', boxSizing: 'content-box' }}>
+          <Col
+            style={{
+              width: '200px',
+              boxSizing: 'content-box',
+              paddingLeft: '50px',
+            }}
+          >
             <Row style={{ flexDirection: 'column' }} gutter={[0, 60]}>
               <Col>
                 {location.pathname !== '/' ? (
