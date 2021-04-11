@@ -12,7 +12,7 @@ export default function Layout({
   location,
   history,
 }: IRouteComponentProps) {
-  const [ids, setIds] = useState<string[]>([]);
+  const [ids, setIds] = useState<{ id: string; value?: string }[]>([]);
 
   const handleChange = useCallback((newValue: string) => {
     history.push(newValue);
@@ -24,13 +24,19 @@ export default function Layout({
     const headers = document.querySelectorAll(
       `.${markdownStyles.contentWrapper} h2`,
     );
-    const ids: string[] = [];
+    const ids: { id: string; value?: string }[] = [];
     headers?.forEach((header) => {
-      ids.push(header.id);
+      console.log(header);
+      ids.push({
+        id: header.id,
+        value: (header as any).innerText!,
+      });
     });
     const comment = document.querySelector(idName);
     if (comment) {
-      ids.push(idName);
+      ids.push({
+        id: idName,
+      });
     }
     setIds(ids);
   }, [location.pathname]);
@@ -124,14 +130,22 @@ export default function Layout({
                     targetOffset={40}
                     offsetTop={60}
                   >
-                    {ids.map((id) => {
-                      if (id !== idName) {
+                    {ids.map(({ id, value }) => {
+                      if (value) {
                         return (
-                          <Anchor.Link href={`#${id}`} title={id} key={id} />
+                          <Anchor.Link
+                            href={`#${id.replace(' ', '')}`}
+                            title={value}
+                            key={id}
+                          />
                         );
                       }
                       return (
-                        <Anchor.Link href={idName} title="参与讨论" key={id} />
+                        <Anchor.Link
+                          href={idName}
+                          title="参与讨论"
+                          key={idName}
+                        />
                       );
                     })}
                   </Anchor>

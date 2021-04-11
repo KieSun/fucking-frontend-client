@@ -21,18 +21,26 @@ const renderers = {
     );
   },
   heading: ({ level, children }) => {
-    const value = children[0].props.value;
+    const value: string = children[0].props.value;
+    const array = value.split('/');
+    const text = array[0];
+    const day = array[1];
     switch (level) {
       case 1:
-        return <h1>{children}</h1>;
+        return (
+          <>
+            <h1>{text}</h1>
+            {day ? <span style={{ color: '#ccc' }}>发布于 {day}</span> : null}
+          </>
+        );
       case 2:
-        return <h2 id={value}>{children}</h2>;
+        return <h2 id={text.replace(' ', '')}>{text}</h2>;
       case 3:
-        return <h3>{children}</h3>;
+        return <h3>{text}</h3>;
       case 4:
-        return <h4>{children}</h4>;
+        return <h4>{text}</h4>;
       default:
-        return <h6>{children}</h6>;
+        return <h6>{text}</h6>;
     }
   },
 };
