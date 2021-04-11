@@ -4,7 +4,7 @@
 
 monorepo 简单来说就是将多个项目整合到了一个仓库里来管理，很多开源库都采用了这种代码管理方式，比如 Vue 3.0：
 
-<img src='https://yck-1254263422.file.myqcloud.com/uPic/1617799085854.jpg' width='70%' />
+<img src='https://yck-1254263422.file.myqcloud.com/uPic/1617799085854.jpg' width='50%' />
 
 从上图我们可以看到 packages 文件夹下存在一堆文件夹，这每个文件夹都对应一个 npm 包，我们把这一些 npm 包都管理在一个仓库下了。
 
