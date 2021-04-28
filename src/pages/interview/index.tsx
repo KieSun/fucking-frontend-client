@@ -46,6 +46,16 @@ export default () => {
               <Title level={5}>JS 基础</Title>
             </Link>
           </Col>
+          <Col span="12">
+            <Link to="/interview/network">
+              <img
+                width="100%"
+                src="https://yck-1254263422.file.myqcloud.com/2021/04/04/16175456197561.jpg"
+                alt=""
+              />
+              <Title level={5}>网络</Title>
+            </Link>
+          </Col>
         </Row>
       </div>
       <Button

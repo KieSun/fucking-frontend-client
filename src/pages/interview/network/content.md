@@ -40,7 +40,7 @@ DNS 的作用就是通过域名查询到具体的 IP。
 
 TCP 建立连接需要进行三次握手：
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043744.png)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-043744.png)
 
 最开始两端都为 CLOSED 状态。在通信开始前，双方都会创建 TCB（一个数据结构，里面包含了协议需要的很多内容，有兴趣的可以自行了解）。 服务器创建完 TCB 后遍进入 LISTEN 状态，此时开始等待客户端发送数据。
 
@@ -70,7 +70,7 @@ PS：在建立连接中，任意一端掉线，TCP 都会重发 SYN 包，一般
 
 一旦 close，TCP 协议就会进行四次握手来断开连接。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043746.png)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-043746.png)
 
 **第一次握手**
 
@@ -143,13 +143,13 @@ PS：一般定时器设定的时间都会大于一个 RTT 的平均时间。
 
 发送端窗口包含已发送但未收到应答的数据和可以发送但是未发送的数据。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043747.png)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-043747.png)
 
 发送端窗口大小是由接收窗口剩余大小决定的。接收方会把当前接收窗口的剩余大小写入应答报文，发送端收到应答后根据该值和当前网络拥塞情况设置发送窗口的大小，所以发送窗口的大小是不断变化的。
 
 当发送端接收到应答报文后，会随之将窗口进行滑动
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043748.png)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-043748.png)
 
 刷过算法的同学看到这两张图应该会很熟悉，毕竟滑动窗口在算法中也是一类高频题目。
 
@@ -231,7 +231,7 @@ UDP 是一个面向报文（报文可以理解为一段段的数据）的协议�
 
 因为 UDP 没有 TCP 那么复杂，需要保证数据不丢失且有序到达。所以 UDP 的头部开销小，只有八字节，相比 TCP 的至少二十字节要少得多，在传输数据报文时是很高效的。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-43739.png)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-43739.png)
 
 头部包含了以下几个数据
 
@@ -261,7 +261,7 @@ HTTPS 最重要的组成部分就是 TLS 协议了，因为是这个协议保证
 
 **TLS 握手过程如下图：**
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043749.jpg)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-043749.jpg)
 
 1. 客户端发送一个随机值，需要的协议和加密方式
 2. 服务端收到客户端的随机值，自己也产生一个随机值，并根据客户端需求的协议和加密方式来使用对应的方式，发送自己的证书（如果需要验证客户端证书需要说明）
@@ -374,15 +374,15 @@ PS：以上说明的都是 TLS 1.2 协议的握手情况，在 1.3 协议中，�
 
 我们先来感受下 HTTP 2.0 比 HTTP 1.X 到底快了多少，可以通过 [该链接](https://http2.akamai.com/demo) 体验。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043750.png)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-043750.png)
 
 在 HTTP 1.X 中，因为队头阻塞的原因，你会发现请求是这样的
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043751.png)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-043751.png)
 
 在 HTTP 2.0 中，因为引入了多路复用，你会发现请求是这样的：
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043753.png)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-043753.png)
 
 ## 多路复用
 
@@ -392,13 +392,13 @@ PS：以上说明的都是 TLS 1.2 协议的握手情况，在 1.3 协议中，�
 
 多路复用，就是在一个 TCP 连接中可以存在多条流。换句话说，也就是可以发送多个请求，对端可以通过帧中的标识知道属于哪个请求。通过这个技术可以极大的提高传输性能。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-043800.png)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-043800.png)
 
 ## 二进制传输
 
 HTTP 2.0 中所有加强性能的核心点在于此。在之前的 HTTP 版本中，我们是通过文本的方式传输数据。在 HTTP 2.0 中引入了新的编码机制，所有传输的数据都会被分割，并采用二进制格式编码为二进制帧。
 
-![](https://yck-1254263422.cos.ap-shanghai.myqcloud.com/blog/2019-06-01-43760.png)
+![](https://yck-1254263422.file.myqcloud.com/blog/2019-06-01-43760.png)
 
 二进制帧分为很多类型，在上图中我们可以发现存在了 HEADERS 帧和 DATA 帧，除了这些之外还有还几种，各位读者有兴趣的话可以自行了解。
 
