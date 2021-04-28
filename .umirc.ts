@@ -1,4 +1,5 @@
 import { defineConfig } from 'umi';
+
 import route from './route';
 
 export default defineConfig({
@@ -25,6 +26,12 @@ export default defineConfig({
           path: '/interview/js',
           component: '@/pages/interview/js',
           title: 'js',
+        },
+        {
+          exact: true,
+          path: '/interview/network',
+          component: '@/pages/interview/network',
+          title: 'network',
         },
         {
           exact: true,
